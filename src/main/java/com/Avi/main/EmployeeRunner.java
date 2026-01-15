@@ -21,6 +21,7 @@ public class EmployeeRunner {
 		Employee emp1 = new Employee(10, "Shivam", "Male", 64548, "India");
 		Employee emp2 = new Employee(11, "Vimla", "Female", 64548, "India");
 		Employee emp3 = new Employee(12, "Keshav", "Female", 64548, "India");
+		Employee emp4 = new Employee(13, "Kriti", "Female", 64548, "India");
 
 		
 	//	Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
@@ -43,9 +44,10 @@ public class EmployeeRunner {
 //		session.persist(emp1);
 //		session.persist(emp2);
 //		session.persist(emp3);
+//		session.persist(emp4);
 //		tx.commit();
 		
-		
+
 		Query<Employee> query = session.createQuery("from empp",Employee.class);
 		System.out.println(query.list());
 	//	Employee employee = session.get(Employee.class, 8);
