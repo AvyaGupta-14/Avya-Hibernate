@@ -23,14 +23,18 @@ public class EmpConfiguration {
 		properties.put(Environment.JAKARTA_JDBC_PASSWORD, "Avya@14");
 		properties.put(Environment.HBM2DDL_AUTO, "create");
 		properties.put(Environment.SHOW_SQL, "true");
-		properties.put(Environment.FORMAT_SQL, "true");
+		//properties.put(Environment.FORMAT_SQL, "true");
 		
-		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().applySettings(properties).build();
-		Metadata metaData = new MetadataSources(ssr).addAnnotatedClass(com.Avi.entity.Employee.class).getMetadataBuilder().build();
-		SessionFactory sessionFactory = metaData.buildSessionFactory();
+	//	StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().applySettings(properties).build();
+	//	Metadata metaData = new MetadataSources(ssr).addAnnotatedClass(com.Avi.entity.Employee.class).getMetadataBuilder().build();
+	//	SessionFactory sessionFactory = metaData.buildSessionFactory();
 
 
-		return sessionFactory;
+	//	StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().applySettings(properties).build();
+		return new MetadataSources(new StandardServiceRegistryBuilder().applySettings(properties).build()).addAnnotatedClass(com.Avi.entity.Employee.class).getMetadataBuilder().build().buildSessionFactory();
+	//	return metaData.buildSessionFactory();
+		
+	//	return sessionFactory;
 	}
 
 }
