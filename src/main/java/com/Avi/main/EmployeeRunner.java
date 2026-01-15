@@ -15,7 +15,11 @@ public class EmployeeRunner {
 	public static void main(String[] args) {
 		
 		
+<<<<<<< Updated upstream
 		Employee emp = new Employee(8, "Renu", "Female", 64548);
+=======
+		Employee emp = new Employee(9, "Ritu", "Female", 64548, "India");
+>>>>>>> Stashed changes
 	//	Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 	//	SessionFactory sessionFactory = cfg.buildSessionFactory();
 	//	SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
