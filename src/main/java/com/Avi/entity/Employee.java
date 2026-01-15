@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 
 @Entity(name="empp")
 public class Employee {
@@ -15,17 +16,19 @@ public class Employee {
 	private String gender;
 
 	private int salary;
-	
+	@Transient
+	private String country;
 	
 	public Employee() {
 		super();
 	}
 
 
-	public Employee(int id, String name, String gender, int salary) {
+	public Employee(int id, String name, String gender, int salary, String country) {
 		this.name = name;
 		this.gender = gender;
 		this.salary = salary;
+		this.country = country;
 	}
 
 
