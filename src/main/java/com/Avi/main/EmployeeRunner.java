@@ -8,6 +8,8 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+
+import com.Avi.config.EmpConfiguration;
 import com.Avi.entity.Employee;
 
 public class EmployeeRunner {
@@ -26,12 +28,12 @@ public class EmployeeRunner {
 //		SessionFactory sessionFactory = metadata.buildSessionFactory();
 		
 		//way2
-		SessionFactory sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build()).getMetadataBuilder().build().buildSessionFactory();
+	//	SessionFactory sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build()).getMetadataBuilder().build().buildSessionFactory();
 		
-	
+		
 		
 		//metadata.buildSessionFactory();
-		Session session = sessionFactory.openSession();
+		Session session = EmpConfiguration.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction();
 		session.persist(emp);
 		tx.commit();
