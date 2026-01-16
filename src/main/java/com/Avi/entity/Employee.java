@@ -9,7 +9,7 @@ import jakarta.persistence.Transient;
 
 
 @NamedQuery(name = "updateAnEmployee" , query = "update empp set name=:n where id=:i")
-//@NamedQuery(name = "deleteEmployeeById" , query = "delete from empp where id=:i")
+@NamedQuery(name = "deleteEmployeeById" , query = "delete from empp where id=:i")
 
 
 @Entity(name="empp")

@@ -98,14 +98,14 @@ public class EmployeeRunner {
 //		System.out.println(list);
 
 		// Named query
-		MutationQuery namedQuery = session.createNamedMutationQuery("updateAnEmployee");
-		namedQuery.setParameter("n", "Karan");
-		namedQuery.setParameter("i", 13);
-		namedQuery.executeUpdate();
-		
-//		MutationQuery namedQuery = session.createNamedMutationQuery("deleteEmployeeById");
-//		namedQuery.setParameter("i", 16);
+//		MutationQuery namedQuery = session.createNamedMutationQuery("updateAnEmployee");
+//		namedQuery.setParameter("n", "Karan");
+//		namedQuery.setParameter("i", 13);
 //		namedQuery.executeUpdate();
+		
+		MutationQuery namedQuery = session.createNamedMutationQuery("deleteEmployeeById");
+		namedQuery.setParameter("i", 12);
+		namedQuery.executeUpdate();
 
 		tx.commit();
 
