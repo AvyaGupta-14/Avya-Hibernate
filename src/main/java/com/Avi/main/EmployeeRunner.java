@@ -17,6 +17,14 @@ import com.Avi.config.EmpConfiguration;
 import com.Avi.entity.Employee;
 
 public class EmployeeRunner {
+	
+	public static void delById(int id,Session session)
+	{
+		// HQL delete query
+		MutationQuery query = session.createMutationQuery("delete from empp where id=:id");
+		query.setParameter("id",id);
+		query.executeUpdate();
+	}
 
 	public static void main(String[] args) {
 		
@@ -80,13 +88,14 @@ public class EmployeeRunner {
 //		
 		
 	// HQL delete query
-		MutationQuery query = session.createMutationQuery("delete from empp where id=15");
-		query.executeUpdate();
-		
-		Query query1=session.createQuery("from empp",Employee.class);
-		List list = query1.list();
-		System.out.println(list);
-		
+//		MutationQuery query = session.createMutationQuery("delete from empp where id=15");
+//		query.executeUpdate();
+//		
+//		Query query1=session.createQuery("from empp",Employee.class);
+//		List list = query1.list();
+//		System.out.println(list);
+//		
+//		
 		tx.commit();
 
 	//	Employee employee = session.get(Employee.class, 8);
