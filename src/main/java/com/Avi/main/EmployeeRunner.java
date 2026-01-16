@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Session;
 //import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.MutationQuery;
 //import org.hibernate.boot.Metadata;
 //import org.hibernate.boot.MetadataSources;
 //import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -20,19 +21,12 @@ public class EmployeeRunner {
 	public static void main(String[] args) {
 		
 		
-<<<<<<< Updated upstream
-		Employee emp1 = new Employee(10, "Shivam", "Male", 64548, "India");
-		Employee emp2 = new Employee(11, "Vimla", "Female", 64548, "India");
-		Employee emp3 = new Employee(12, "Keshav", "Female", 64548, "India");
-		Employee emp4 = new Employee(13, "Kriti", "Female", 64548, "India");
-=======
 		Employee emp1 = new Employee(10, "Avya", "Female", 64548, "India");
 		Employee emp2 = new Employee(11, "Nitin", "Female", 64548, "India");
 		Employee emp3 = new Employee(12, "Neelam", "Female", 64548, "India");
 		Employee emp4 = new Employee(12, "Jack", "Male", 64548, "India");
 		Employee emp5 = new Employee(12, "Atharv", "Male", 64548, "India");
 		Employee emp6 = new Employee(12, "Naitik", "Male", 64548, "India");
->>>>>>> Stashed changes
 
 		
 	//	Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
@@ -56,13 +50,6 @@ public class EmployeeRunner {
 //		session.persist(emp2);
 //		session.persist(emp3);
 //		session.persist(emp4);
-<<<<<<< Updated upstream
-//		tx.commit();
-		
-
-		Query<Employee> query = session.createQuery("from empp",Employee.class);
-		System.out.println(query.list());
-=======
 //		session.persist(emp5);
 //		session.persist(emp6);
 	//	tx.commit();
@@ -84,16 +71,24 @@ public class EmployeeRunner {
 		
 		
 		//HQL update query using named parameters
-	//	Query q = session.createQuery("update empp set name=:n where id=:i");
-		session.createMutationQuery("update empp set name=:n where id=:i");
-
-		q.setParameter("n","Pankaj");
-		q.setParameter("i",1);
-		System.out.print("status: "+q.executeUpdate());
+//		Query q = session.createQuery("update empp set name=:n where id=:i");
+//		MutationQuery mutationQuery = session.createMutationQuery("update empp set name=:n where id=:i");
+//
+//		mutationQuery.setParameter("n","Pankaj");
+//		mutationQuery.setParameter("i",4);
+//		System.out.print("status: "+mutationQuery.executeUpdate());
+//		
+		
+	// HQL delete query
+		MutationQuery query = session.createMutationQuery("delete from empp where id=15");
+		query.executeUpdate();
+		
+		Query query1=session.createQuery("from empp",Employee.class);
+		List list = query1.list();
+		System.out.println(list);
 		
 		tx.commit();
 
->>>>>>> Stashed changes
 	//	Employee employee = session.get(Employee.class, 8);
 	//	System.out.println(employee);
 		
