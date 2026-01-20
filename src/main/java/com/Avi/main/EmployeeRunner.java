@@ -8,6 +8,8 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+
+import com.Avi.config.EmpConfiguration;
 import com.Avi.entity.Employee;
 
 public class EmployeeRunner {
@@ -15,11 +17,11 @@ public class EmployeeRunner {
 	public static void main(String[] args) {
 		
 		
-<<<<<<< Updated upstream
-		Employee emp = new Employee(8, "Renu", "Female", 64548);
-=======
-		Employee emp = new Employee(9, "Ritu", "Female", 64548, "India");
->>>>>>> Stashed changes
+
+		Employee emp = new Employee("Shivam", "Male", 64548);
+
+	//	Employee emp = new Employee(9, "Ritu", "Female", 	64548, "India");
+
 	//	Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 	//	SessionFactory sessionFactory = cfg.buildSessionFactory();
 	//	SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
@@ -30,12 +32,14 @@ public class EmployeeRunner {
 //		SessionFactory sessionFactory = metadata.buildSessionFactory();
 		
 		//way2
-		SessionFactory sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build()).getMetadataBuilder().build().buildSessionFactory();
+//		SessionFactory sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build()).getMetadataBuilder().build().buildSessionFactory();
 		
 	
 		
 		//metadata.buildSessionFactory();
-		Session session = sessionFactory.openSession();
+//		Session session = sessionFactory.openSession();
+//		Transaction tx = session.beginTransaction();
+		Session session =  EmpConfiguration.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction();
 		session.persist(emp);
 		tx.commit();
