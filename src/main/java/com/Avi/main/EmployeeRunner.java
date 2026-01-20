@@ -10,6 +10,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import com.Avi.config.EmpConfiguration;
+import com.Avi.entity.Address;
 import com.Avi.entity.Employee;
 
 public class EmployeeRunner {
@@ -18,7 +19,10 @@ public class EmployeeRunner {
 		
 		
 
-		Employee emp = new Employee("Shivam", "Male", 64548);
+		Employee emp1 = new Employee("Shivam", "Male", 64548);
+		Address add1 = new Address("Noida","UP");
+		
+		emp1.setAddress(add1);
 
 	//	Employee emp = new Employee(9, "Ritu", "Female", 	64548, "India");
 
@@ -41,7 +45,8 @@ public class EmployeeRunner {
 //		Transaction tx = session.beginTransaction();
 		Session session =  EmpConfiguration.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction();
-		session.persist(emp);
+		session.persist(add1);
+		session.persist(emp1);
 		tx.commit();
 		
 	//	Employee employee = session.get(Employee.class, 8);
