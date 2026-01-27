@@ -1,23 +1,29 @@
 package com.Avi.entity;
-import jakarta.persistence.Column;
+//import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
+//import jakarta.persistence.Transient;
+import jakarta.persistence.OneToMany;
+import java.util.List;
 
-@Entity(name="empp")
+//@Entity(name="empp")
+@Entity
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name = "e_Name")
+	//@Column(name = "e_Name")
 	private String name;
 	private String gender;
-
 	private int salary;
-	@Transient
-	private String country;
+//	@Transient
+//	private String country;
+	
+	
+	@OneToMany
+	private List<Address> addresses;
 	
 	public Employee() {
 		super();
@@ -28,7 +34,17 @@ public class Employee {
 		this.name = name;
 		this.gender = gender;
 		this.salary = salary;
-		this.country = country;
+		//this.country = country;
+	}
+
+	
+	public List<Address> getAddresses() {
+		return addresses;
+	}
+
+
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
 	}
 
 

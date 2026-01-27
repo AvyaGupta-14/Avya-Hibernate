@@ -1,5 +1,7 @@
 package com.Avi.main;
 
+import java.util.ArrayList;
+
 import org.hibernate.Session;
 //import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -11,6 +13,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import com.Avi.config.EmpConfiguration;
+import com.Avi.entity.Address;
 import com.Avi.entity.Employee;
 
 public class EmployeeRunner {
@@ -18,9 +21,9 @@ public class EmployeeRunner {
 	public static void main(String[] args) {
 		
 		
-		Employee emp1 = new Employee(10, "Shivam", "Male", 64548, "India");
-		Employee emp2 = new Employee(11, "Vimla", "Female", 64548, "India");
-		Employee emp3 = new Employee(12, "Keshav", "Female", 64548, "India");
+//		Employee emp1 = new Employee(10, "Shivam", "Male", 64548, "India");
+//		Employee emp2 = new Employee(11, "Vimla", "Female", 64548, "India");
+//		Employee emp3 = new Employee(12, "Keshav", "Female", 64548, "India");
 
 		
 	//	Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
@@ -38,16 +41,16 @@ public class EmployeeRunner {
 		
 		
 		//metadata.buildSessionFactory();
-		Session session = EmpConfiguration.getSessionFactory().openSession();
-		Transaction tx = session.beginTransaction();
+//		Session session = EmpConfiguration.getSessionFactory().openSession();
+//		Transaction tx = session.beginTransaction();
 //		session.persist(emp1);
 //		session.persist(emp2);
 //		session.persist(emp3);
 //		tx.commit();
 		
 		
-		Query<Employee> query = session.createQuery("from empp",Employee.class);
-		System.out.println(query.list());
+//		Query<Employee> query = session.createQuery("from empp",Employee.class);
+//		System.out.println(query.list());
 	//	Employee employee = session.get(Employee.class, 8);
 	//	System.out.println(employee);
 		
@@ -57,5 +60,48 @@ public class EmployeeRunner {
 		//Employee employee = new Employee();
 	//	session.load(employee, 5);
 	//	System.out.println(employee);
+		
+		
+		
+		
+		
+		
+		Employee emp1 = new Employee();
+		emp1.setName("Vinay");
+		emp1.setGender("M");
+		emp1.setSalary(400000);
+
+		Address add1 = new Address();
+		add1.setCity("Noida");
+		add1.setState("UP");
+		Address add2 = new Address();
+		add2.setCity("GZB");
+		add2.setState("UP");
+		Address add3 = new Address();
+		add3.setCity("Lucknow");
+		add3.setState("UP");
+		
+		
+		ArrayList<Address> listOfAddresses = new ArrayList<>();
+		listOfAddresses.add(add1);
+		listOfAddresses.add(add2);
+		listOfAddresses.add(add3);
+		
+		emp1.setAddresses(listOfAddresses);
+
+		Session session = EmpConfiguration.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		session.persist(add1);
+		session.persist(add2);
+		session.persist(add3);
+		session.persist(emp1);
+		tx.commit();
+		
+		
+		Employee employee = session.find(Employee.class, 1);
+		System.out.println(employee);
+		System.out.println(employee.getAddresses());
+		
+		
 	}
 }
