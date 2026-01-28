@@ -66,41 +66,48 @@ public class EmployeeRunner {
 		
 		
 		
-		Employee emp1 = new Employee();
-		emp1.setName("Vinay");
-		emp1.setGender("M");
-		emp1.setSalary(400000);
-
-		Address add1 = new Address();
-		add1.setCity("Noida");
-		add1.setState("UP");
-		Address add2 = new Address();
-		add2.setCity("GZB");
-		add2.setState("UP");
-		Address add3 = new Address();
-		add3.setCity("Lucknow");
-		add3.setState("UP");
-		
-		
-		ArrayList<Address> listOfAddresses = new ArrayList<>();
-		listOfAddresses.add(add1);
-		listOfAddresses.add(add2);
-		listOfAddresses.add(add3);
-		
-		emp1.setAddresses(listOfAddresses);
+//		Employee emp1 = new Employee();
+//		emp1.setName("Vinay");
+//		emp1.setGender("M");
+//		emp1.setSalary(400000);
+//
+//		Address add1 = new Address();
+//		add1.setCity("Noida");
+//		add1.setState("UP");
+//		add1.setEmployee(emp1);
+//		Address add2 = new Address();
+//		add2.setCity("GZB");
+//		add2.setState("UP");
+//		add2.setEmployee(emp1);
+//		Address add3 = new Address();
+//		add3.setCity("Lucknow");
+//		add3.setState("UP");
+//		add3.setEmployee(emp1);
+//		
+//		
+//		ArrayList<Address> listOfAddresses = new ArrayList<>();
+//		listOfAddresses.add(add1);
+//		listOfAddresses.add(add2);
+//		listOfAddresses.add(add3);
+//		
+//		emp1.setAddresses(listOfAddresses);
 
 		Session session = EmpConfiguration.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction();
-		session.persist(add1);
-		session.persist(add2);
-		session.persist(add3);
-		session.persist(emp1);
-		tx.commit();
+//		session.persist(add1);
+//		session.persist(add2);
+//		session.persist(add3);
+//		session.persist(emp1);
+//		tx.commit();
+//		
 		
+//		Employee employee = session.find(Employee.class, 1);
+//		System.out.println(employee);
+//		System.out.println(employee.getAddresses());
 		
-		Employee employee = session.find(Employee.class, 1);
-		System.out.println(employee);
-		System.out.println(employee.getAddresses());
+		Address address = session.find(Address.class, 2);
+		System.out.println(address);
+		System.out.println(address.getEmployee());
 		
 		
 	}
