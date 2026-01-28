@@ -1,4 +1,5 @@
 package com.Avi.entity;
+import jakarta.persistence.CascadeType;
 //import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,7 +23,7 @@ public class Employee {
 //	private String country;
 	
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Address> addresses;
 	
 	public Employee() {

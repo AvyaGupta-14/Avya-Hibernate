@@ -74,12 +74,15 @@ public class EmployeeRunner {
 		Address add1 = new Address();
 		add1.setCity("Noida");
 		add1.setState("UP");
+	
 		Address add2 = new Address();
 		add2.setCity("GZB");
 		add2.setState("UP");
+		
 		Address add3 = new Address();
 		add3.setCity("Lucknow");
 		add3.setState("UP");
+	
 		
 		
 		ArrayList<Address> listOfAddresses = new ArrayList<>();
@@ -91,16 +94,18 @@ public class EmployeeRunner {
 
 		Session session = EmpConfiguration.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction();
-		session.persist(add1);
-		session.persist(add2);
-		session.persist(add3);
+	
 		session.persist(emp1);
 		tx.commit();
 		
 		
-		Employee employee = session.find(Employee.class, 1);
-		System.out.println(employee);
-		System.out.println(employee.getAddresses());
+//		Employee employee = session.find(Employee.class, 1);
+//		System.out.println(employee);
+//		System.out.println(employee.getAddresses());
+//		
+//		Address address = session.find(Address.class, 2);
+//		System.out.println(address);
+//		System.out.println(address.getEmployee());
 		
 		
 	}
