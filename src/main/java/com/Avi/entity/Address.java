@@ -1,11 +1,14 @@
 
 package com.Avi.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToMany;
+//import jakarta.persistence.ManyToOne;
 //import jakarta.persistence.OneToOne;
 
 @Entity
@@ -19,8 +22,12 @@ public class Address {
 //	@OneToOne
 //	private Employee employee;
 	
-	@ManyToOne
-	private Employee employee;
+//	@ManyToOne
+//	private Employee employee;
+	
+	@ManyToMany
+	private List<Employee> employees;
+	
 
 
 	public Address() {
@@ -41,13 +48,13 @@ public class Address {
 	}
 	
 
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
+//	public Employee getEmployee() {
+//		return employee;
+//	}
+//
+//	public void setEmployee(Employee employee) {
+//		this.employee = employee;
+//	}
 
 	public int gethNo() {
 		return hNo;

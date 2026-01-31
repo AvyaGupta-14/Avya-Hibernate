@@ -4,8 +4,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
+
+import jakarta.persistence.ManyToMany;
 //import jakarta.persistence.Transient;
-import jakarta.persistence.OneToMany;
+//import jakarta.persistence.OneToMany;
 import java.util.List;
 
 //@Entity(name="empp")
@@ -18,11 +22,13 @@ public class Employee {
 	private String name;
 	private String gender;
 	private int salary;
-//	@Transient
-//	private String country;
 	
-	
-	@OneToMany
+	@ManyToMany
+	@JoinTable(
+	    name = "emp_address",
+	    joinColumns = @JoinColumn(name = "emp_id"),
+	    inverseJoinColumns = @JoinColumn(name = "address_id")
+	)
 	private List<Address> addresses;
 	
 	public Employee() {
